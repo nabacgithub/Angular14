@@ -1,0 +1,150 @@
+<div class="container">
+  <div class="row mt-2">
+    <div class="col col-md-4 offset-md-4">
+      <a class="btn btn-primary" routerLink="/users/create">Create/Update user</a>
+    </div>
+
+  </div>
+
+
+  <a href="#" routerLink="/users/" class="btn btn-success">Consultation des utilisateurs</a>
+
+
+  <table class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>product</th>
+        <th>price</th>
+
+
+        <th width="250px">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of userInfo">
+        <td>{{ user.id }}</td>
+        <td>{{ user.product }}</td>
+        <td>{{ user.price }}</td>
+        <td>
+          <a class="btn btn-primary" [routerLink]="['/users/edit',user.id]">Edit</a>
+          <button type="button" (click)="openDeleteModal(user.id)" class="btn btn-danger">Delete</button>
+        </td>
+
+
+
+
+      </tr>
+    </tbody>
+  </table>
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form #m="ngForm" (ngSubmit)="consult(m)" class="bg-primary p-2 bg" style="--bs-bg-opacity: .5;">
+            <table class="table table-striped table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">Id</th>
+                  <th scope="col">product</th>
+                  <th scope="col">price</th>
+
+                </tr>
+              </thead>
+              <tbody class="table-group-divider">
+                <tr class="table-primary">
+                  <td class="table-primary">
+                    <input type="text" #id="ngModel" ngModel name="id" />
+                  </td>
+                  <td class="table-primary">
+                    <input type="password" #product="ngModel" ngModel name="product" />
+                  </td>
+                  <td class="table-primary">
+                    <input type="text" #price="ngModel" ngModel name="price" />
+                  </td>
+                  <td class="table-primary">
+                    <button type="submit" class="btn btn-outline-danger">Consult</button>
+                  </td>
+
+                </tr>
+              </tbody>
+            </table>
+
+
+
+          </form>
+
+
+
+
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+///////////////////////////////////
+
+
+<!-- Modal -->
+<div class="modal fade" id="deletemodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Confirm delete</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Are sure to delete item?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger" (click)="delete()">Confirm delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+/*/*/*/*/*/*/*/*/*/*/*/*/*/*
+
+<input type="text" [(ngModel)]="param" />
+
+<a class="btn btn-primary" (click)="handleInput()">Exécuter filtre</a>
+<div>{{userfiltre}}</div>
+<div>{{param}}</div>
+<table class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>product</th>
+      <th>price</th>
+    
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let userf of userfiltre">
+      <td>{{ userf.id }}</td>
+      <td>{{ userf.product }}</td>
+      <td>{{ userf.price }}</td>
+    </tr>
+  </tbody>
+</table>

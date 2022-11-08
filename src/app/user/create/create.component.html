@@ -1,0 +1,38 @@
+<div class="container">
+    <legend>Create/Update user</legend>
+
+    <form>
+        <div class="mb-3">
+          <label for="txtid" class="form-label">Id</label>
+          <input type="number"
+           class="form-control"
+            id="txtid"
+             aria-describedby="emailHelp"
+             name="id"
+             [(ngModel)]="userForm.id"/>
+         
+        </div>
+
+        <div class="mb-3">
+            <label for="txtproduct" class="form-label">Product</label>
+            <input type="text"
+             class="form-control"
+              id="product"
+               aria-describedby="emailHelp"
+               name="product"
+               [(ngModel)]="userForm.product"/>
+                 </div>
+
+          <div class="mb-3">
+            <label for="txtprice" class="form-label">Price</label>
+            <input type="number"
+             class="form-control"
+              id="txtprice"
+               aria-describedby="emailHelp"
+               name="price"
+               [(ngModel)]="userForm.price"/>
+            </div>
+
+        <button type="button" (click)="create()" class="btn btn-primary">Submit</button>
+      </form>
+</div>
